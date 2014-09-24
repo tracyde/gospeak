@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/codegangsta/cli"
+	"github.com/GeertJohan/go.rice"
 	"log"
 	"net/http"
 	"os"
@@ -56,7 +57,7 @@ func main() {
 		var sChan = make(chan string)
 		go SpeechServer(command, sChan)
 		http.Handle("/speak", &SpeechHandler{sChan})
-		http.Handle("/", http.FileServer(http.Dir("static")))
+		http.Handle("/", http.FileServer(rice.MustFindBox("static").HTTPBox()))
 		log.Fatal(http.ListenAndServe(port, nil))
 	}
 
