@@ -56,6 +56,7 @@ func main() {
 		var sChan = make(chan string)
 		go SpeechServer(command, sChan)
 		http.Handle("/speak", &SpeechHandler{sChan})
+		http.Handle("/", http.FileServer(http.Dir("static")))
 		log.Fatal(http.ListenAndServe(port, nil))
 	}
 

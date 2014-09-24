@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+
+<head>
+  <title>gospeak</title>
+  <script src='/lib/angular.min.js'></script>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <script src='/gospeak.js'></script>
+  <link rel='stylesheet' href='/gospeak.css'>
+</head>
+
+<body>
+<div class='container' ng-controller='NodeCtrl'>
+  <h1 class='charcoal rounded-box'>gospeak</h1>
+
+  <h2>Speak</h2>
+
+  <form>
+    <input type='text' class='rounded-box' placeholder='hello world' ng-model='saying'>
+    <button class='grey rounded-box' ng-click='speak()' ng-disabled='working'>Speak</button>
+  </form>
+
+  <img class='spinner' src='spinner.gif' alt='Loading' ng-class='{working: working}'/>
+</div>
+</body>
+</html>
